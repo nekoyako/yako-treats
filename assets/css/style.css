@@ -109,6 +109,7 @@ body {
 
 .hero .yakoimg img {
   width: 600px;
+  height: 600px;
   margin-left: 10rem;
   align-items: center;
 }
@@ -151,6 +152,7 @@ body {
 
 .about .yakoimg img {
   width: 750px;
+  height: 750px;
 }
 
 .about .content {
