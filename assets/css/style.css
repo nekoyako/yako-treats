@@ -6,17 +6,17 @@
 
 @font-face {
   font-family: lemonmilk;
-  src: url(../fonts/LEMONMILK-Regular.otf);
+  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/LEMONMILK-Regular.otf);
 }
 
 @font-face {
   font-family: gothic;
-  src: url(../fonts/GOTHIC.TTF);
+  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/GOTHIC.TTF);
 }
 
 @font-face {
   font-family: gothicbold;
-  src: url(../fonts/GOTHICB.TTF);
+  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/GOTHICB.TTF);
 }
 
 * {
@@ -109,7 +109,6 @@ body {
 
 .hero .yakoimg img {
   width: 600px;
-  height: 600px;
   margin-left: 10rem;
   align-items: center;
 }
@@ -152,7 +151,6 @@ body {
 
 .about .yakoimg img {
   width: 750px;
-  height: 750px;
 }
 
 .about .content {
