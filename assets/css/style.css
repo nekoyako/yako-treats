@@ -11,12 +11,12 @@
 
 @font-face {
   font-family: gothic;
-  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/fonts/GOTHIC.TTF);
+  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/GOTHIC.TTF);
 }
 
 @font-face {
   font-family: gothicbold;
-  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/fonts/GOTHICB.TTF);
+  src: url(https://nekoyako.github.io/yako-treats/assets/fonts/GOTHICB.TTF);
 }
 
 * {
