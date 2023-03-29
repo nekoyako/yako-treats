@@ -1,0 +1,137 @@
+@media (max-width: 500px) {
+  html {
+    font-size: 45%;
+  }
+
+  /* home */
+  .hero {
+    min-height: 30vh;
+  }
+
+  .hero .yakoimg img {
+    width: 200px;
+    margin-left: 4rem;
+  }
+
+  .hero .content {
+    font-size: 150%;
+    margin-right: 2rem;
+  }
+
+  /* about */
+  .about {
+    background-color: var(--primary);
+  }
+  .about .yakoimg img {
+    display: none;
+  }
+
+  .about .content {
+    max-width: 100rem;
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  .about .content h2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .about .content p {
+    text-align: left;
+  }
+
+  /* product */
+  .gallery .row .menu .content {
+    width: 35%;
+  }
+
+  .gallery .row .menu .content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .gallery .row .menu .content .button {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  /* testi */
+  .testi {
+    height: auto;
+    padding-top: 3rem;
+  }
+
+  .testi .testimonial .image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .testi .testimonial .slide p {
+    font-size: 15px;
+  }
+
+  .testi .testimonial .slide .details .name {
+    font-size: 13px;
+  }
+
+  .testi .testimonial .slide .details .job {
+    font-size: 10px;
+  }
+
+  /* contact */
+  .contactUs {
+    min-height: auto;
+    padding: 1rem 7% 1.4rem;
+  }
+
+  .box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form {
+    height: 440px;
+  }
+
+  .info {
+    height: auto;
+    text-align: center;
+  }
+
+  .map {
+    height: 200px;
+  }
+}
+
+@media (max-width: 450px) {
+  /* product */
+  .gallery .row .menu .content {
+    width: 38%;
+  }
+
+  .gallery .row .menu .content img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* product */
+  .gallery .row .menu .content {
+    width: 42%;
+  }
+}
+
+@media (max-height: 700px) {
+  /* home */
+  .hero {
+    min-height: 50vh;
+  }
+}
