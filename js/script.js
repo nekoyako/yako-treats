@@ -1,9 +1,17 @@
 // toggle class active
 const navbarNav = document.querySelector(".navbar-nav");
+
 // ketika hamburger menu diklik
 document.querySelector("#hamburger-menu").onclick = () => {
   navbarNav.classList.toggle("active");
 };
+
+document
+  .getElementById("hamburger-menu")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    // kode lainnya untuk menampilkan menu
+  });
 
 //klik di luar sidebar untuk menghilangkan nav
 const hamburger = document.querySelector("#hamburger-menu");
