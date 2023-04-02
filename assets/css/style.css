@@ -151,7 +151,7 @@ body {
 }
 
 .about img {
-  width: 200%;
+  width: 50%;
 }
 
 .about .content {
@@ -281,7 +281,7 @@ body {
 .testi {
   height: 90vh;
   width: 100%;
-  padding-top: 6rem;
+  padding-top: 9rem;
   margin-bottom: 7rem;
   display: flex;
   flex-direction: column;
@@ -301,8 +301,8 @@ body {
 .testi .testimonial {
   position: relative;
   max-width: 900px;
+  min-height: 500px;
   width: 100%;
-  height: 200%;
   margin-top: 2rem;
   overflow: hidden;
 }
@@ -524,4 +524,340 @@ footer .credit {
 footer .credit a {
   color: var(--primary);
   font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 70%;
+  }
+
+  /* navbar */
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 20rem;
+    height: 100vh;
+    transition: 0.4s ease-in-out;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+    background-color: var(--primary);
+  }
+
+  .navbar .navbar-nav a {
+    color: black;
+    display: block;
+    margin: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    border-bottom: none;
+  }
+
+  /* home */
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero .content {
+    font-size: 200%;
+  }
+
+  /* about */
+  .about .content {
+    padding-right: 2rem;
+    padding-top: 5rem;
+    max-width: 300rem;
+  }
+
+  .about .content h2 {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .about .content h2 span {
+    font-size: 2.5rem;
+  }
+
+  .about .content p {
+    font-size: 1.1rem;
+  }
+
+  .about .content p span {
+    font-size: 1.2rem;
+  }
+
+  /* product */
+  .gallery .row h5 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .gallery .row .menu .content {
+    width: 30%;
+  }
+
+  .gallery .row .menu .content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .gallery .row .menu .content h4 {
+    font-size: 1.2rem;
+  }
+
+  .gallery .row .menu .content p {
+    font-size: 1rem;
+  }
+
+  /* testi */
+  .testi {
+    height: auto;
+    padding-top: 5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .slide p {
+    padding: 0 20px;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  /* contact */
+  .contactUs {
+    min-height: auto;
+  }
+
+  .box {
+    grid-template-rows: auto;
+  }
+
+  .info {
+    height: 180px;
+  }
+
+  .map {
+    height: 250px;
+  }
+
+  /* footer */
+  footer .links {
+    font-size: 1.5rem;
+  }
+
+  footer .credit {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 820px) {
+  /* home */
+  .hero img {
+    margin-left: 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* home */
+  .hero .yakoimg img {
+    width: 300px;
+    margin-left: 6rem;
+  }
+
+  /* about */
+  .about .content p {
+    font-size: 1.1rem;
+  }
+
+  .about .content p span {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 45%;
+  }
+
+  /* home */
+  .hero {
+    min-height: 30vh;
+    padding-top: 2rem;
+  }
+
+  .hero img {
+    width: 50%;
+    margin-left: 1rem;
+    margin-top: 3rem;
+  }
+
+  .hero .content {
+    font-size: 150%;
+    margin-right: 0;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.2);
+  }
+
+  /* about */
+  .about {
+    background-color: var(--primary);
+  }
+  .about img {
+    display: none;
+  }
+
+  .about .content {
+    max-width: 100rem;
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 5rem;
+  }
+
+  .about .content h2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.2);
+    font-size: 2.5rem;
+  }
+
+  .about .content h2 span {
+    font-size: 3rem;
+  }
+
+  .about .content p {
+    text-align: left;
+    font-size: 1.6rem;
+  }
+
+  .about .content p span {
+    font-size: 1.7rem;
+  }
+
+  /* product */
+  .gallery .row .menu .content {
+    width: 40%;
+  }
+
+  .gallery .row .menu .content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .gallery .row .menu .content .button {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  /* testi */
+  .testi {
+    height: auto;
+    padding-top: 6rem;
+  }
+
+  .testi h3 {
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.2);
+  }
+
+  .testi .testimonial .image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .testi .testimonial .slide p {
+    font-size: 15px;
+  }
+
+  .testi .testimonial .slide .details .name {
+    font-size: 13px;
+  }
+
+  .testi .testimonial .slide .details .job {
+    font-size: 10px;
+  }
+
+  /* contact */
+  .contactUs {
+    min-height: auto;
+    padding: 1rem 7% 1.4rem;
+  }
+
+  .contactUs .title {
+    padding-top: 4rem;
+  }
+
+  .contactUs .title h3 {
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.2);
+  }
+
+  .box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form {
+    height: 440px;
+  }
+
+  .info {
+    height: auto;
+    text-align: center;
+  }
+
+  .info h5 {
+    font-size: 2rem;
+  }
+
+  .info .infoBox div p {
+    font-size: 1.5rem;
+  }
+
+  .info .infoBox div a {
+    font-size: 1.5rem;
+  }
+
+  .map {
+    height: 200px;
+  }
+}
+
+@media (max-width: 450px) {
+  /* product */
+  .gallery .row .menu .content img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* product */
+  .gallery .row .menu .content {
+    width: 42%;
+  }
+}
+
+@media (max-height: 700px) {
+  /* home */
+  .hero {
+    padding-top: 4rem;
+  }
 }
