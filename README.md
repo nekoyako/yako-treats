@@ -1,4 +1,4 @@
-<img src="assets/images/readme_yako.png" alt="Yako-Treats">
+<img src="https://nekoyako.github.io/yako-treats/assets/images/readme_yako.png" alt="Yako-Treats">
 
 <h1>Yako Treats</h1>
 
