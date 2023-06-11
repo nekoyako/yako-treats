@@ -2,7 +2,7 @@
 
 <h1>Yako Treats</h1>
 
-Welcome to Yako Treats! This is a website for a small business that specializes in creating delicious treats that will satisfy your sweet tooth. The website is hosted at yako-treats.web.app
+Welcome to Yako Treats! This is a website for a small business that specializes in creating delicious treats that will satisfy your sweet tooth. The website is hosted at https://yakotreats.000webhostapp.com/
 
 <h2>Previewing the Website</h2>
 To preview the Yako Treats website, we recommend that you use either Microsoft Edge or Google Chrome web browser. This will ensure that you have the best viewing experience and that all website features work properly.
