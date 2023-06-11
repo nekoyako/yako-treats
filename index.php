@@ -1,0 +1,427 @@
+<?php
+session_start();
+include "php/config.php";
+?>
+
+<html>
+
+<head>
+  <title>Yako Treats</title>
+  <link rel="icon" href="assets/images/icon-yako.png" />
+
+  <!-- script -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://www.instagram.com/embed.js"></script>
+
+  <!-- swiper css -->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- boxicons css -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- navbar start -->
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">YAKO TREATS</a>
+
+    <div class="navbar-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#product">Product</a>
+      <a href="#testi">Testimonies</a>
+      <a href="#contact">Contact</a>
+      <?php
+      if (isset($_SESSION['id'])) {
+        ?>
+        <a href="admin/page.php">
+          << Back</a>
+            <?php
+      }
+      ?>
+    </div>
+
+    <div class="navbar-extra">
+      <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+    </div>
+  </nav>
+  <!-- navbar end -->
+
+  <!-- feather icons start-->
+  <script>
+    feather.replace();
+  </script>
+  <!-- feather icons end -->
+
+  <!-- hero section start -->
+  <section class="hero" id="home">
+    <img src="assets/images/yk-2_ed.png" alt="" />
+    <main class="content">
+      <h1>
+        Taste the Tasteful Treats <br />
+        by <span>Yako </span>
+      </h1>
+      <a href="https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20order." class="cta">Order Now</a>
+    </main>
+  </section>
+  <!-- hero section end -->
+
+  <!-- about section start -->
+  <section id="about" class="about">
+    <img src="assets/images/yk-4_ed.png" alt="" />
+    <div class="content">
+      <h2>About <span>Yako</span></h2>
+
+      <p>
+        Yako Treats is a Small Online Based F&B Business focused on selling
+        Desserts as its main product and was
+        <span>established in August 2020</span> with Panna Cotta as its first
+        product. However, we are temporarily close in February 2021.
+        <br />
+        After going through various considerations, finally we reopen in July
+        2022 and <span>introduce Fudgy Brownies as our main product.</span>
+      </p>
+      <br />
+      <h2>How to Order?</h2>
+      <p>
+        Orders will be <span>ready every Monday</span> and made with a
+        Pre-Order system <span>via WhatsApp or Instagram</span>. <br />Free
+        delivery fee for Sungai Raya, Southeast Pontianak and South Pontianak
+        areas.
+      </p>
+    </div>
+  </section>
+  <!-- about section end -->
+
+  <!-- new product section start -->
+  <section id="product" class="product">
+    <div class="gallery">
+      <?php
+      $sqlCat = "SELECT * FROM tbcategories";
+      $queryCat = mysqli_query($con, $sqlCat);
+
+      while ($rowCat = mysqli_fetch_array($queryCat)) {
+        $categoryId = $rowCat['idcat'];
+        $categoryName = $rowCat['cat_name'];
+        ?>
+        <h5>
+          <?= $categoryName; ?>
+        </h5>
+        <div class="row">
+          <?php
+          $no = 1;
+          $sql = "SELECT * FROM tbproduct WHERE idcat = '$categoryId'";
+          $query = mysqli_query($con, $sql);
+          while ($row = mysqli_fetch_array($query)) {
+            $image = "default.jpg";
+            if (!empty($row['image'])) {
+              $image = $row['image'];
+            }
+            $link_image = "images/product/$image";
+            ?>
+            <div class="menu">
+              <div class="content">
+                <img src="<?= $link_image; ?>">
+                <h4>
+                  <?= $row['product_name']; ?>
+                </h4>
+                <h3>
+                  <?= $row['product_type']; ?>
+                </h3>
+                <p>
+                  <?= $row['size']; ?>
+                </p>
+                <p>
+                  <?= $row['description']; ?>
+                </p>
+                <h4>IDR
+                  <?= number_format($row['price'], 0, ",", "."); ?>
+                </h4>
+                <button class="button" onclick="redirectToLink('<?= $row['link_cta']; ?>')">Buy Now</button>
+              </div>
+            </div>
+            <?php
+            $no++;
+          }
+          ?>
+        </div>
+        <?php
+      }
+      ?>
+    </div>
+  </section>
+
+
+
+  <!-- new product section end -->
+
+  <!-- product section start -->
+  <!-- <section id="product" class="product">
+    <div class="gallery">
+      <div class="row">
+        <h5>Classic Fudgy Brownies</h5>
+        <div class="menu">
+          <div class="content">
+            <img src="assets/images/prod1.jpg" alt="Half Size Classic Fudgy Brownies" />
+            <h4>Classic Fudgy Brownies<br />Half Box</h4>
+            <p>size: 10 x 20 x 5 cm</p>
+            <p>ingredients: chocolate, sugar, eggs, butter, and flour</p>
+            <h4>IDR 38k</h4>
+            <button class="button" onclick="wa_link(1)">Buy Now</button>
+          </div>
+
+          <div class="content">
+            <img src="assets/images/prod2.jpg" />
+            <h4>Classic Fudgy Brownies<br />Regular Box</h4>
+            <p>size: 20 x 20 x 5 cm</p>
+            <p>ingredients: chocolate, sugar, eggs, butter, and flour</p>
+            <h4>IDR 65k</h4>
+            <button class="button" onclick="wa_link(2)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h5>Chocolate Chips Fudgy Brownies</h5>
+        <div class="menu">
+          <div class="content">
+            <img src="assets/images/prod3.jpg" />
+            <h4>Choco Chips Fudgy Brownies<br />Half Box</h4>
+            <p>size: 10 x 20 x 5 cm</p>
+            <p>
+              ingredients: chocolate, sugar, eggs, butter, flour, and
+              chocolate chips
+            </p>
+            <h4>IDR 40k</h4>
+            <button class="button" onclick="wa_link(3)">Buy Now</button>
+          </div>
+
+          <div class="content">
+            <img src="assets/images/yk_choc.jpg" />
+            <h4>Choco Chips Fudgy Brownies<br />Regular Box</h4>
+            <p>size: 20 x 20 x 5 cm</p>
+            <p>
+              ingredients: chocolate, sugar, eggs, butter, flour, and
+              chocolate chips
+            </p>
+            <h4>IDR 68k</h4>
+            <button class="button" onclick="wa_link(4)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h5>Special Edition</h5>
+        <div class="menu">
+          <div class="content">
+            <img src="assets/images/prod4.jpg" />
+            <h4>Special Packaging<br />Classic Fudgy Brownies</h4>
+            <p>size: 20 x 20 x 5 cm</p>
+            <p>
+              customize packaging for CNY, Christmas, Eid, Valentine's Day,
+              etc
+            </p>
+            <h4>IDR 70k</h4>
+            <button class="button" onclick="wa_link(5)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- product section end -->
+
+  <!-- testi section start -->
+  <section id="testi" class="testi">
+    <h3>Testimonies</h3>
+    <div class="testimonial mySwiper">
+      <div class="testi-content swiper-wrapper">
+        <div class="slide swiper-slide">
+          <img src="assets/images/testi1.jpg" alt="" class="image" />
+          <p>
+            The brownies are delicious. I took it to Malang and my friends
+            really liked it, they said the chocolate tastes really good, thank
+            you Yako.
+          </p>
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Nabila Putri Prayogo</span>
+            <span class="job"> Medical Student</span>
+          </div>
+        </div>
+
+        <div class="slide swiper-slide">
+          <img src="assets/images/testi2.jpg" alt="" class="image" />
+          <p>
+            It's delicious, it just seems a bit too much chocolate for me.
+          </p>
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Merisa Anggraini</span>
+            <span class="job">Accounting Student</span>
+          </div>
+        </div>
+
+        <div class="slide swiper-slide">
+          <img src="assets/images/testi3.jpg" alt="" class="image" />
+          <p>
+            The brownies are really delicious, the texture is soft when eaten.
+          </p>
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Cristofer Wie Wie</span>
+            <span class="job">Content Creator</span>
+          </div>
+        </div>
+
+        <div class="slide swiper-slide">
+          <img src="assets/images/testi4.jpg" alt="" class="image" />
+          <p>
+            Everything is good, the packaging is also good for that price.
+            Worth it to buy.
+          </p>
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Ryan Pradana</span>
+            <span class="job">Chef</span>
+          </div>
+        </div>
+
+        <div class="slide swiper-slide">
+          <img src="assets/images/testi5.jpg" alt="" class="image" />
+          <p>
+            Literally legit. I personally am a savory person, I prefer savory
+            to sweet, but Yako's fudgy brownies are a different hit. Very
+            delicious. The taste, texture and look of it is mouthgasm. Should
+            try!
+          </p>
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Hana Eva</span>
+            <span class="job">Medical Student</span>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next nav-btn"></div>
+      <div class="swiper-button-prev nav-btn"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  <!-- testi section end -->
+
+  <!-- contact section start -->
+  <section id="contact" class="contactUs">
+    <div class="title">
+      <h3>Get in Touch</h3>
+    </div>
+    <div class="box">
+      <!-- form -->
+      <div class="contact form">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/yako.treats/"
+          data-instgrm-version="13"></blockquote>
+      </div>
+
+      <!-- info -->
+      <div class="contact info">
+        <h5>Connect with Us ...</h5>
+        <div class="infoBox">
+          <div>
+            <span><ion-icon name="location-outline"></ion-icon></span>
+            <p>Pontianak, Indonesia</p>
+          </div>
+          <div>
+            <span><ion-icon name="mail-outline"></ion-icon></span>
+            <a href="mailto:yakotreats@gmail.com">yakotreats@gmail.com</a>
+          </div>
+          <div>
+            <span><ion-icon name="logo-whatsapp"></ion-icon></span>
+            <a href="https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20order.">+62 851 5547 1801</a>
+          </div>
+          <div>
+            <span><ion-icon name="logo-instagram"></ion-icon></span>
+            <a href="https://instagram.com/yako.treats/">@yako.treats</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="contact map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127674.16188929553!2d109.2615096652138!3d-0.03539482355354592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d58f604b0799b%3A0x511ef9501fc9ffe3!2sPontianak%2C%20Kota%20Pontianak%2C%20Kalimantan%20Barat!5e0!3m2!1sid!2sid!4v1678367876548!5m2!1sid!2sid"
+          style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+  <!-- contact section end -->
+
+  <!-- footer start -->
+  <footer>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#product">Product</a>
+      <a href="#testi">Testimonies</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="credit">
+      <p>Created by <a href="#home">Yako Treats</a> | &copy; 2023</p>
+    </div>
+  </footer>
+  <!-- footer end -->
+
+  <!-- swiper JS -->
+  <script src="js/swiper-bundle.min.js"></script>
+
+  <!-- java script -->
+  <script src="js/script.js"></script>
+
+  <!-- wa link -->
+  <script>
+    function redirectToLink(link) {
+      window.open(link, '_blank');
+    }
+  </script>
+  <!-- <script>
+    function wa_link(angka) {
+      if (angka == 1) {
+        window.open(
+          "https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20order%20Classic%20Fudgy%20Brownies%20Half%20Box."
+        );
+      } else if (angka == 2) {
+        window.open(
+          "https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20order%20Classic%20Fudgy%20Brownies%20Regular%20Box."
+        );
+      } else if (angka == 3) {
+        window.open(
+          "https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20order%20Chocolate%20Chips%20Fudgy%20Brownies%20Half%20Box."
+        );
+      } else if (angka == 4) {
+        window.open(
+          "https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20order%20Chocolate%20Chips%20Fudgy%20Brownies%20Regular%20Box."
+        );
+      } else if (angka == 5) {
+        window.open(
+          "https://wa.me/6285155471801?text=Hi%2C%20Yako!%20I%20want%20to%20customize%20my%20packaging."
+        );
+      }
+    }
+  </script> -->
+</body>
+
+</html>
